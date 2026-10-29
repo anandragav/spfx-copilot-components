@@ -45,6 +45,12 @@
         "name": "weekly-pulse-quiz-justification.png",
         "url": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/weekly-pulse-quiz/assets/weekly-pulse-quiz-justification.png",
         "alt": "The Why B is right dialog on a SharePoint page, explaining the correct answer"
+      },
+      {
+        "type": "video",
+        "order": 200,
+        "url": "https://www.youtube.com/embed/P7vP8gJeqR0",
+        "alt": "Video walkthrough: setting up and running the Weekly Pulse Quiz on a SharePoint page"
       }
     ],
     "authors": [

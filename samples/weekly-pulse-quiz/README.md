@@ -8,6 +8,12 @@ The sample uses the SharePoint site theme by default, has optional hex colour ov
 
 ![Weekly Pulse Quiz web part on a SharePoint page after a correct answer](assets/weekly-pulse-quiz-answer-correct.png)
 
+### Video walkthrough
+
+[![Video walkthrough of the Weekly Pulse Quiz on a SharePoint page and in Copilot](https://i.ytimg.com/vi/P7vP8gJeqR0/hqdefault.jpg)](https://www.youtube.com/watch?v=P7vP8gJeqR0)
+
+[Watch the walkthrough on YouTube](https://www.youtube.com/watch?v=P7vP8gJeqR0) or [listen to the episode on Spotify](https://open.spotify.com/episode/60wCLmDVK2Ph9jZLyG6lwz).
+
 ## Compatibility
 
 ![SPFx 1.24.0](https://img.shields.io/badge/SPFx-1.24.0-green.svg)
