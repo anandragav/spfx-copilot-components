@@ -4,7 +4,7 @@
  */
 
 /**
- * Settings that a re-run brings up to date on a column that already exists (v1.0.3 upgrade).
+ * Settings that a re-run brings up to date on a column that already exists.
  * Never touches items.
  */
 export interface IFieldUpgrade {

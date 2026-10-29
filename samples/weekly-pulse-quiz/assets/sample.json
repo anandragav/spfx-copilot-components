@@ -35,16 +35,16 @@
       {
         "type": "image",
         "order": 100,
-        "name": "weekly-pulse-quiz-web-part.png",
-        "url": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/weekly-pulse-quiz/assets/weekly-pulse-quiz-web-part.png",
-        "alt": "Weekly Pulse Quiz web part showing a weekly question with the chosen answer marked correct and a check mark"
+        "name": "weekly-pulse-quiz-answer-correct.png",
+        "url": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/weekly-pulse-quiz/assets/weekly-pulse-quiz-answer-correct.png",
+        "alt": "Weekly Pulse Quiz web part on a SharePoint page after a correct answer, with a check mark and a Why B is right? link"
       },
       {
         "type": "image",
         "order": 101,
-        "name": "weekly-pulse-quiz-copilot.png",
-        "url": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/weekly-pulse-quiz/assets/weekly-pulse-quiz-copilot.png",
-        "alt": "Weekly Pulse Quiz in a narrow Copilot host after a correct answer, with the inline Why? panel open"
+        "name": "weekly-pulse-quiz-justification.png",
+        "url": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/weekly-pulse-quiz/assets/weekly-pulse-quiz-justification.png",
+        "alt": "The Why B is right dialog on a SharePoint page, explaining the correct answer"
       }
     ],
     "authors": [

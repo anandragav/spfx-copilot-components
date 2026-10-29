@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Weekly Pulse Quiz: one-time, idempotent list setup with CLI for Microsoft 365 (m365).
 # Same result as Provision-WeeklyPulse.ps1. Run as a site owner after `m365 login`.
-# Safe to run again: it adds what is missing and brings older (v1.0.2) column and view
+# Safe to run again: it adds what is missing and brings older column and view
 # settings up to date. It never changes or deletes list items.
 #
 #   ./provision-weekly-pulse.sh --site-url https://contoso.sharepoint.com [--responses-site-url URL] [--dry-run]
@@ -84,7 +84,7 @@ num_xml() {
   if [[ -n "${4:-}" ]]; then echo "$open><DefaultFormula>$4</DefaultFormula></Field>"; else echo "$open />"; fi
 }
 
-# ---- v1.0.3 upgrade of existing columns (schema and display name only; items are never touched)
+# ---- bring existing columns up to date (schema and display name only; items are never touched)
 set_attr() { # xml name value -> xml with name="value" on the <Field> element
   local xml="$1" name="$2" value="$3" head rest re
   head="${xml%%>*}"; rest="${xml#*>}"
@@ -202,7 +202,7 @@ ensure_field "$SITE_URL" "$Q_LIST" Justification "<Field Type='Note' Name='Justi
 ensure_field "$SITE_URL" "$Q_LIST" IsActive "$(yesno_xml IsActive 1)" 1
 ensure_field "$SITE_URL" "$Q_LIST" WeekStart "<Field Type='Calculated' Name='WeekStart' StaticName='WeekStart' DisplayName='Week starts' ResultType='DateTime' Format='DateOnly' ReadOnly='TRUE'><Formula>=DATE(QuizYear,1,4)-MOD(WEEKDAY(DATE(QuizYear,1,4))+5,7)+(WeekNumber-1)*7</Formula><FieldRefs><FieldRef Name='QuizYear' /><FieldRef Name='WeekNumber' /></FieldRefs></Field>" 0
 ensure_field "$SITE_URL" "$Q_LIST" WeekLabel "<Field Type='Calculated' Name='WeekLabel' StaticName='WeekLabel' DisplayName='Week label' ResultType='Text' ReadOnly='TRUE'><Formula>=QuizYear&amp;\"-W\"&amp;TEXT(WeekNumber,\"00\")</Formula><FieldRefs><FieldRef Name='QuizYear' /><FieldRef Name='WeekNumber' /></FieldRefs></Field>" 0
-# Lists set up by v1.0.2 or earlier: bring these columns up to date (new lists already match, so nothing happens).
+# Lists from an earlier setup: bring these columns up to date (new lists already match, so nothing happens).
 if list_exists "$SITE_URL" "$Q_LIST"; then
   upgrade_number_field "$SITE_URL" "$Q_LIST" QuizYear '=YEAR(Today)'
   upgrade_number_field "$SITE_URL" "$Q_LIST" WeekNumber

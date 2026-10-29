@@ -326,7 +326,7 @@ export class ListSetupService implements IListSetup {
     return added || indexed || updated ? done(parts.join(', ')) : skipped(parts[0]);
   }
 
-  /** v1.0.3 upgrade of an existing column: display name, Commas, DefaultFormula. Items are never touched. */
+  /** Brings an existing column up to date: display name, Commas, DefaultFormula. Items are never touched. */
   private async _upgradeField(site: string, listPath: string, field: IFieldInfo, def: IFieldDefinition): Promise<boolean> {
     const up = def.upgrade || {};
     const fieldPath = `${listPath}/fields/getbyinternalnameortitle('${encodeURIComponent(odataString(def.internalName))}')`;

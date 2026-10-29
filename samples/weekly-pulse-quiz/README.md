@@ -6,9 +6,7 @@ One multiple-choice question a week, on a modern SharePoint page (web part) and 
 
 The sample uses the SharePoint site theme by default, has optional hex colour overrides in the property pane, requests **no API permissions** and creates its lists from a **Set up lists** button (or the included PnP PowerShell and CLI for Microsoft 365 scripts).
 
-![Weekly Pulse Quiz web part after a correct answer](assets/weekly-pulse-quiz-web-part.png)
-
-![Weekly Pulse Quiz in a narrow Copilot host with the inline Why? panel](assets/weekly-pulse-quiz-copilot.png)
+![Weekly Pulse Quiz web part on a SharePoint page after a correct answer](assets/weekly-pulse-quiz-answer-correct.png)
 
 ## Compatibility
 
@@ -146,6 +144,62 @@ This sample illustrates the following concepts:
 - Time-zone-safe ISO week calculation with `Intl`
 - Site-theme colours with optional overrides and automatic WCAG AA text contrast
 
+### Screenshots
+
+Screenshots are from a SharePoint Online test tenant. Site addresses and names are replaced with Contoso placeholders.
+
+**Answering**
+
+The week's question, before answering. Pick an option, then select **Submit**. With the default privacy setting, answers aren't shown to colleagues.
+
+![Weekly Pulse Quiz showing the week's question with four options and a Submit button](assets/weekly-pulse-quiz-question.png)
+
+A correct answer: the chosen option is highlighted and a check mark is drawn.
+
+![Weekly Pulse Quiz after a correct answer, with a check mark and a Why B is right? link](assets/weekly-pulse-quiz-answer-correct.png)
+
+A wrong answer: a plain X, the right option highlighted and "Correct answer: …".
+
+![Weekly Pulse Quiz after a wrong answer, showing Not quite and the correct answer](assets/weekly-pulse-quiz-answer-wrong.png)
+
+The justification pop-up on a SharePoint page.
+
+![The Why B is right dialog with the justification text and a Close button](assets/weekly-pulse-quiz-justification.png)
+
+No question for this week.
+
+![Weekly Pulse Quiz showing There's no quiz this week. Check back on Monday.](assets/weekly-pulse-quiz-no-quiz.png)
+
+**Setting up**
+
+In edit mode, a web part without lists shows what's missing, a **Set up lists** button and the matching provisioning script command.
+
+![Edit mode with the not set up notice, the Set up lists button and the property pane](assets/weekly-pulse-quiz-setup.png)
+
+**Set up lists** says what it will create before it changes anything.
+
+![The Set up Weekly Pulse lists dialog listing the three lists and their permissions](assets/weekly-pulse-quiz-setup-dialog.png)
+
+Progress is shown step by step.
+
+![Set up in progress, with each step marked as done or pending](assets/weekly-pulse-quiz-setup-progress.png)
+
+The result of each step, and a warning when the site time zone differs from the quiz time zone.
+
+![Weekly Pulse is set up, with the result of every step and a time zone note](assets/weekly-pulse-quiz-setup-done.png)
+
+Editors see the exact `QuizYear` and `WeekNumber` to set when there's no question for the current week.
+
+![Editor note: Set QuizYear 2026 and WeekNumber 44 on a question in Weekly Pulse Questions](assets/weekly-pulse-quiz-editor-note.png)
+
+The property pane: lists, answers and feedback, and text.
+
+![The Weekly Pulse Quiz property pane with the Lists, Answers and feedback and Text groups](assets/weekly-pulse-quiz-property-pane.png)
+
+The **Weekly Pulse Questions** list, one question per week.
+
+![The Weekly Pulse Questions list with QuizYear, WeekNumber, choices, CorrectChoice, Justification and Week label columns](assets/weekly-pulse-quiz-questions-list.png)
+
 ### Develop and test
 
 ```bash
@@ -160,6 +214,8 @@ Before you publish beyond a test tenant, change `contact_email` in `copilot/ai-p
 
 ### Known limits
 
+- **What was tested.** The web part and the **Set up lists** button were tested on a SharePoint Online dev tenant.
+- **Copilot.** The Copilot component is set up exactly like the author's SharePoint Form app (a separate SPFx solution, not in this repository), which was tested end to end in Copilot: the same declarative agent and API plugin wiring, the same `SharePointWebPart` host, static tool discovery and no API permissions. This sample's Copilot side was not tested end to end, because **Add to Teams** (Sync to Teams) was blocked on the test tenant.
 - Item-level security doesn't hide answers from site owners, admins or the audit log.
 - The **Upcoming weeks** view follows the site time zone. SharePoint views can't compute ISO weeks, so it filters on the calculated `WeekStart >= [Today] - 6 days`.
 - The `QuizYear` default (`=YEAR(Today)`) is evaluated in the site's time zone when an item is created. For ISO weeks that cross a year boundary (52, 53 or 1), check `QuizYear` by hand.

@@ -415,11 +415,11 @@ describe('ListSetupService', () => {
     expect('MyOwnColumn' in existing.fields).toBe(true);
   });
 
-  it('v1.0.2 → v1.0.3 upgrade: fixes Commas, default and title, adds the week columns to both views, never touches items', async () => {
+  it('re-run on lists from an earlier setup: fixes Commas, default and title, adds the week columns to both views, never touches items', async () => {
     const sim = new SimSharePoint([SITE]);
     const svc = new ListSetupService(sim, targets(), ORIGIN);
     await svc.run(() => undefined);
-    // Make the Questions list look exactly like a v1.0.2 setup, with two grid-created items that have no week.
+    // Make the Questions list look like an earlier setup, with two grid-created items that have no week.
     const qs = sim.list(SITE, 'Weekly Pulse Questions')!;
     qs.schema.QuizYear =
       '<Field Type="Number" DisplayName="QuizYear" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="TRUE" Min="2020" Max="2100" Decimals="0" ' +

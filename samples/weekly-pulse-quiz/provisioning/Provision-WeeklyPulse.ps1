@@ -4,7 +4,7 @@
 
 .DESCRIPTION
   Run as a site owner. Safe to run again: it adds what is missing and brings lists made by
-  v1.0.2 or earlier up to date (QuizYear and WeekNumber shown after Title in the default view
+  an earlier setup up to date (QuizYear and WeekNumber shown after Title in the default view
   and in "Upcoming weeks", no thousands separator, QuizYear defaults to this year, the
   calculated week column is called "Week label"). It never changes or deletes list items.
   Use -WhatIf for a dry run (it connects and reads, but changes nothing).
@@ -129,7 +129,7 @@ function Get-UpgradedSchemaXml([string] $SchemaXml, [System.Collections.IDiction
   return $new
 }
 
-# v1.0.3 upgrade of an existing column: display name and/or schema only. Items are never touched.
+# Brings an existing column up to date: display name and/or schema only. Items are never touched.
 function Update-Field {
   [CmdletBinding(SupportsShouldProcess = $true)]
   [OutputType([int])]
