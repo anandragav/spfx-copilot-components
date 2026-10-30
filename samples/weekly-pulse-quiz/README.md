@@ -206,6 +206,16 @@ The **Weekly Pulse Questions** list, one question per week.
 
 ![The Weekly Pulse Questions list with QuizYear, WeekNumber, choices, CorrectChoice, Justification and Week label columns](assets/weekly-pulse-quiz-questions-list.png)
 
+**In Copilot Chat**
+
+Ask Copilot to show this week's quiz from a site. The same quiz renders inline in the chat, with the same answer state as on the SharePoint page.
+
+![Weekly Pulse Quiz in Microsoft 365 Copilot Chat after a wrong answer, showing the correct answer and a Why B is right? link](assets/weekly-pulse-quiz-copilot-chat-answer.png)
+
+The justification opens inline in the chat.
+
+![Weekly Pulse Quiz in Microsoft 365 Copilot Chat with the Why B is right explanation expanded](assets/weekly-pulse-quiz-copilot-chat-why.png)
+
 ### Develop and test
 
 ```bash
@@ -220,8 +230,7 @@ Before you publish beyond a test tenant, change `contact_email` in `copilot/ai-p
 
 ### Known limits
 
-- **What was tested.** The web part and the **Set up lists** button were tested on a SharePoint Online dev tenant.
-- **Copilot.** The Copilot component is set up exactly like the author's SharePoint Form app (a separate SPFx solution, not in this repository), which was tested end to end in Copilot: the same declarative agent and API plugin wiring, the same `SharePointWebPart` host, static tool discovery and no API permissions. This sample's Copilot side was not tested end to end, because **Add to Teams** (Sync to Teams) was blocked on the test tenant.
+- **What was tested.** The web part and the **Set up lists** button were tested on a SharePoint Online dev tenant, and the Copilot component was tested by the author in Microsoft 365 Copilot Chat with a licensed user (see the **In Copilot Chat** screenshots).
 - Item-level security doesn't hide answers from site owners, admins or the audit log.
 - The **Upcoming weeks** view follows the site time zone. SharePoint views can't compute ISO weeks, so it filters on the calculated `WeekStart >= [Today] - 6 days`.
 - The `QuizYear` default (`=YEAR(Today)`) is evaluated in the site's time zone when an item is created. For ISO weeks that cross a year boundary (52, 53 or 1), check `QuizYear` by hand.
